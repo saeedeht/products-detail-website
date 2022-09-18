@@ -1,10 +1,13 @@
 import './App.css';
 
+//CONTEXT
+import ProductContextProvider from './Context/ProductContextProvider';
+
 function App() {
     return(
-        <div>
-            app
-        </div>
+        <ProductContextProvider>
+            
+        </ProductContextProvider>
     )
 }
 
