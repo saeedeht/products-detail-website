@@ -1,7 +1,7 @@
-import './App.css';
+import './App.css'
 
 //Components
-import Store from './Services/Components/Store';
+import Store from './Components/Store';
 
 //Context
 import ProductContextProvider from './Context/ProductContextProvider';
@@ -9,7 +9,7 @@ import ProductContextProvider from './Context/ProductContextProvider';
 function App() {
     return(
         <ProductContextProvider>
-
+            <Store />
         </ProductContextProvider>
     )
 }
