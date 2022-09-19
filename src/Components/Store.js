@@ -13,7 +13,7 @@ const Store = () => {
     return (
         <div style={{display:'flex',flexWrap:'wrap',justifyContent:'space-between'}} >
             {
-                products.map( item => <Product key={item.id} productData={item} />  )
+                products.map( product => <Product key={product.id} productData={product} />  )
             }    
         </div>
     );
