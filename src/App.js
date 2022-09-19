@@ -1,4 +1,5 @@
 import './App.css'
+import { Switch,Route,Redirect } from 'react-router';
 
 //Components
 import Store from './Components/Store';
@@ -9,7 +10,10 @@ import ProductContextProvider from './Context/ProductContextProvider';
 function App() {
     return(
         <ProductContextProvider>
-            <Store />
+            <Switch>
+                <Route path='/products' component={Store} />
+                <Redirect to='/products' />
+            </Switch>   
         </ProductContextProvider>
     )
 }
