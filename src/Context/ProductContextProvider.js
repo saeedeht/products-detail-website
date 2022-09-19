@@ -5,7 +5,7 @@ import { getProducts } from '../Services/Api';
 
 const ProductsContext = createContext ;
 
-const ProductContextProvider = (props) => {
+const ProductContextProvider = ({children}) => {
 
     const [products,setProducts] = useState ([]);
 
@@ -22,7 +22,7 @@ const ProductContextProvider = (props) => {
 
     return (
         <ProductsContext.Provider value={products} >
-            {props.children}
+            {children}
         </ProductsContext.Provider>
     );
 };
