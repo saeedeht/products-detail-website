@@ -46,6 +46,13 @@ const cartReducer = (state,action) => {
                 totall:0,
                 checkedOut:true
             }
+        case 'CLEAR' :
+            return {
+                selectedItems:[],
+                itemsCounter:0,
+                totall:0,
+                checkedOut:false
+            }
         
 
     }
