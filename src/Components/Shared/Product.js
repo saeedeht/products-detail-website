@@ -1,10 +1,16 @@
-import React from 'react';
+import React ,{ useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 //funtctions
-import { shorten } from '../../Helpers/functions';
+import { shorten,isInCart } from '../../Helpers/functions';
+
+//Context 
+import { cartContext, CartContext } from '../../Context/CardContextProvider';
 
 const Product = ({productData}) => {
+
+    const {state,dispatch} = useContext(cartContext);
+
     return (
         <div>
             <img src={productData.image} alt='product' style={{width:'200px'}} />
@@ -13,7 +19,11 @@ const Product = ({productData}) => {
             <div>
                 <Link to={`/Products/${productData.id}`} > Details  </Link>
                 <div>
-                    <button>Add to card</button>
+                    {
+                        isInCart(state,productData.id) ?
+                        <button onClick={() => dispatch(dispatch({type:'INCREASE',payload:productData}))} >+</button> :
+                        <button onClick={() => dispatch(dispatch({type:'ADD_ITEM',payload:productData}))} >Add to cart</button> 
+                    }
                 </div>
             </div>
         </div>
