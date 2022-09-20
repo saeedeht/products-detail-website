@@ -2,10 +2,10 @@ import React ,{ useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 //funtctions
-import { shorten,isInCart } from '../../Helpers/functions';
+import { shorten,isInCart,quantityCount } from '../../Helpers/functions';
 
 //Context 
-import { cartContext, CartContext } from '../../Context/CardContextProvider';
+import { cartContext } from '../../Context/CardContextProvider';
 
 const Product = ({productData}) => {
 
@@ -21,9 +21,10 @@ const Product = ({productData}) => {
                 <div>
                     {
                         isInCart(state,productData.id) ?
-                        <button onClick={() => dispatch(dispatch({type:'INCREASE',payload:productData}))} >+</button> :
-                        <button onClick={() => dispatch(dispatch({type:'ADD_ITEM',payload:productData}))} >Add to cart</button> 
+                        <button onClick={() => dispatch({type:'INCREASE',payload:productData})} >+</button> :
+                        <button onClick={() => dispatch({type:'ADD_ITEM',payload:productData})} >Add to cart</button> 
                     }
+                    
                 </div>
             </div>
         </div>
