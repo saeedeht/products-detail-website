@@ -7,15 +7,18 @@ import ProductDetails from './Components/ProductDetails';
 
 //Context
 import ProductContextProvider from './Context/ProductContextProvider';
+import CardContextProvider from './Context/CardContextProvider';
 
 function App() {
     return(
         <ProductContextProvider>
-            <Switch>
-                <Route path='/products/:id' component={ProductDetails} />
-                <Route path='/products' component={Store} />
-                <Redirect to='/products' />
-            </Switch>   
+            <CardContextProvider>
+                <Switch>
+                    <Route path='/products/:id' component={ProductDetails} />
+                    <Route path='/products' component={Store} />
+                    <Redirect to='/products' />
+                </Switch>  
+            </CardContextProvider> 
         </ProductContextProvider>
     )
 }
