@@ -1,11 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
-const shopCart = () => {
+//Components
+import Card from './Shared/Card';
+
+//Context
+import { CartContext } from '../Context/CardContextProvider';
+
+const ShopCart = () => {
+
+    const { state, dispatch } = useContext(CartContext);
+
     return (
         <div>
-            shop cart
+           <div>
+               {state.selectedItems.map(item => <Card key={item.id} data={item} /> )}
+           </div>
         </div>
     );
 };
 
-export default shopCart;
+export default ShopCart;

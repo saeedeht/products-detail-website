@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 //Context
-import { cartContext } from '../../Context/CardContextProvider';
+import { CartContext } from '../../Context/CardContextProvider';
 
 //Icons 
 import shopIcon from '../../assets/icon/shop.svg';
 
 const Navbar = () => {
 
-    const {state} = useContext(cartContext);
+    const {state} = useContext(CartContext);
 
     return (
         <div>
