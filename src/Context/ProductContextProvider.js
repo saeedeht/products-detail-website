@@ -1,4 +1,4 @@
-import React,{useState,useEffect,createContext} from 'react';
+import React,{ useState, useEffect, createContext } from 'react';
 
 //API
 import { getProducts } from '../Services/Api';
@@ -11,7 +11,7 @@ const ProductContextProvider = ({children}) => {
 
     useEffect(() => {
         const fetchAPI = async () => {
-            setProducts( await getProducts() );
+            setProducts(await getProducts());
         }
 
         fetchAPI();

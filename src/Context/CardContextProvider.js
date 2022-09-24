@@ -1,4 +1,4 @@
-import React,{useReducer,createContext} from 'react';
+import React,{ useReducer, createContext } from 'react';
 
 const initialState = {
     selectedItems:[],
@@ -9,7 +9,7 @@ const initialState = {
 
 const sumItems = items => {
     const itemsCounter = items.reduce((total,product) => total + product.quantity,0);
-    const total = items.reduce((total,product) => total + product.price * product.quantity,0).toFixed(2);
+    let total = items.reduce((total,product) => total + product.price * product.quantity,0).toFixed(2);
     return {itemsCounter, total}
 }
 
@@ -32,21 +32,22 @@ const cartReducer = (state,action) => {
             const newSelectedItems = state.selectedItems.filter( item => item.id !== action.payload.id );
             return {
                 ...state,
-                selectedItems : [...newSelectedItems]
+                selectedItems : [...newSelectedItems],
+                ...sumItems(newSelectedItems)
             }
         case 'INCREASE' :
             const indexI = state.selectedItems.findIndex(item => item.id === action.payload.id);
             state.selectedItems[indexI].quantity++ ;
             return {
                 ...state,
-                selectedItems : [...newSelectedItems]
+                ...sumItems(state.selectedItems)
             }
         case 'DECREASE' :
             const indexD = state.selectedItems.findIndex(item => item.id === action.payload.id);
             state.selectedItems[indexD].quantity-- ;
             return {
                 ...state,
-                selectedItems : [...newSelectedItems]
+                ...sumItems(state.selectedItems)
             }
         case 'CHECKOUT' :
             return {

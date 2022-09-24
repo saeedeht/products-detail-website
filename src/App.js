@@ -1,5 +1,5 @@
 import './App.css'
-import { Switch,Route,Redirect } from 'react-router';
+import { Switch,Route,Redirect } from 'react-router-dom';
 
 //Components
 import Store from './Components/Store';
@@ -26,5 +26,6 @@ function App() {
         </ProductContextProvider>
     )
 }
+
 
 export default App;
