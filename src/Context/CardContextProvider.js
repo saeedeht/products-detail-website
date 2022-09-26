@@ -1,22 +1,22 @@
 import React,{ useReducer, createContext } from 'react';
 
 const initialState = {
-    selectedItems:[],
-    itemsCounter:0,
-    total:0,
-    checkout:false
+    selectedItems: [],
+    itemsCounter: 0,
+    total: 0,
+    checkout: false
 }
 
 const sumItems = items => {
-    const itemsCounter = items.reduce((total,product) => total + product.quantity,0);
-    let total = items.reduce((total,product) => total + product.price * product.quantity,0).toFixed(2);
+    const itemsCounter = items.reduce((total, product) => total + product.quantity, 0);
+    let total = items.reduce((total,product) => total + product.price * product.quantity, 0).toFixed(2);
     return {itemsCounter, total}
 }
 
 const cartReducer = (state,action) => {
     switch(action.type) {
         case 'ADD_ITEM':
-            if (!state.selectedItems.find( item => item.id === action.payload.id ) ) {
+            if (!state.selectedItems.find(item => item.id === action.payload.id )) {
                 state.selectedItems.push({
                     ...action.payload,
                     quantity:1
@@ -24,15 +24,15 @@ const cartReducer = (state,action) => {
             }
             return {
                 ...state,
-                selectedItems : [...state.selectedItems],
+                selectedItems:[...state.selectedItems],
                 ...sumItems(state.selectedItems),
                 checkout:false
             }
         case 'REMOVE_ITEM':
-            const newSelectedItems = state.selectedItems.filter( item => item.id !== action.payload.id );
+            const newSelectedItems = state.selectedItems.filter(item => item.id !== action.payload.id);
             return {
                 ...state,
-                selectedItems : [...newSelectedItems],
+                selectedItems:[...newSelectedItems],
                 ...sumItems(newSelectedItems)
             }
         case 'INCREASE' :

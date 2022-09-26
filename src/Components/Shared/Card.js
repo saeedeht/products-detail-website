@@ -1,7 +1,7 @@
 import React,{ useContext } from 'react';
 
 //Context
-import CartContext from '../../Context/CardContextProvider';
+import { CartContext } from '../../Context/CardContextProvider';
 
 //Functions
 import { shorten } from '../../Helpers/functions';
@@ -15,7 +15,7 @@ import styles from "./Card.module.css";
 const Card = (props) => {
 
     const {dispatch} = useContext(CartContext);
-    const {image,title,price,quantity} = props.data;
+    const {image, title, price, quantity} = props.data;
     
     return (
         <div className={styles.container}>
@@ -28,14 +28,12 @@ const Card = (props) => {
                 <span className={styles.quantity}>{quantity}</span>
             </div>
             <div className={styles.buttonContainer}>
-                {
-                    quantity > 1 ?
-                    <button onClick={() => dispatch({type: 'DECREASE', payload: props.data})}> - </button> :
-                    <button onClick={() => dispatch({type: 'REMOVE_ITEM', payload: props.data})}> 
-                        <img src={trashIcon} alt='trash' style={{width:'20px'}} />
-                    </button> 
-                }
-                <button onClick={() => dispatch({type: 'INCREASE',  payload: props.data})}> + </button> 
+            {
+                quantity > 1 ? 
+                <button onClick={() => dispatch({type: "DECREASE", payload: props.data})} >-</button> :
+                <button onClick={() => dispatch({type: "REMOVE_ITEM", payload: props.data})} ><img src={trashIcon} alt="trash" /></button>
+            }
+            <button onClick={() => dispatch({type: "INCREASE", payload: props.data})} >+</button>
             </div>
         </div>
     );
